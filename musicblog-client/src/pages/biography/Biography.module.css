@@ -1,0 +1,22 @@
+.bioContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bioContainer ul {
+    width: 50%;
+}
+
+.bioContainer ul img {
+    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+}
+
+.bioContainer li {
+    text-align: center;
+    list-style: none;
+    padding: 25px;
+}

@@ -1,14 +1,13 @@
 import createApolloClient from "@/apollo-client";
+import styles from "@/pages/posts/year/PostsByYear.module.css"
 import { graphql } from "@/gql/index";
 import { serialize } from "next-mdx-remote/serialize";
 import {Post as PostProps} from "@/types";
-import styles from "../styles/Home.module.css";
 import { MDXRemote } from "next-mdx-remote";
-import Link from "next/link";
 
-const GetAllPosts = graphql(`
-query GetAllPosts($limit: Int) {
-    posts(sort: "published_datetime:DESC", pagination: { limit: $limit }) {
+const GetPostsByYear = graphql(`
+query GetPostsByYear {
+    posts(sort: "published_datetime:DESC") {
       data {
         id
         attributes {
@@ -28,9 +27,23 @@ query GetAllPosts($limit: Int) {
   }
 `);
 
-export const getStaticProps = async () => {
+export const getStaticPaths = async () => {
   const client = createApolloClient();
-  const {data} = await client.query({query: GetAllPosts, variables: {limit:2}});
+  const {data} = await client.query({query: GetPostsByYear, variables: {}});
+
+  const paths = data.posts!.data.map((post) => ({
+    params: {year: post.attributes?.published_datetime.substring(0,4)}
+  }))
+
+  return {
+    paths: paths,
+    fallback: false,
+  }
+}
+
+export const getStaticProps = async ({params} : {params: {year: string}}) => {
+  const client = createApolloClient();
+  const {data} = await client.query({query: GetPostsByYear, variables: {}});
 
   const serializedPosts = await Promise.all(
     data.posts!.data.map(async (post) => {
@@ -46,14 +59,18 @@ export const getStaticProps = async () => {
       }
     }))   
 
+  const postsByYear = serializedPosts.filter(post => post.attributes.published_datetime.substring(0, 4) === params.year)
+
   return {
     props: {
-      posts: serializedPosts
+      posts: postsByYear,
     }
   }   
 }
 
-const Home = ({posts} : {posts : PostProps[]}) => {
+
+
+const PostsByYear = ({posts} : {posts : PostProps[]}) => {
   
   return (
     <div className={styles.homeContainer}>
@@ -76,10 +93,8 @@ const Home = ({posts} : {posts : PostProps[]}) => {
           })
         }
       </ul>
-      <Link className={styles.showOlderLink} href="/posts">Show older</Link>
     </div>
   )
 }
 
-export default Home;
-
+export default PostsByYear

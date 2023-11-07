@@ -3,8 +3,23 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(160, 59, 152);
 }
 
-.bandName {
+.bandName p {
     padding-left: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.yearLink {
+    color: white;
+    font-family: Amatic;
+    font-size: 25px;
+}
+
+.yearLink:hover {
+    text-decoration: none;
+    color: rgb(212, 197, 197);
 }

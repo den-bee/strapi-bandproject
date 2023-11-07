@@ -2,35 +2,35 @@ import createApolloClient from "@/apollo-client";
 import { graphql } from "@/gql/index";
 import { serialize } from "next-mdx-remote/serialize";
 import {Post as PostProps} from "@/types";
-import styles from "../styles/Home.module.css";
+import styles from "@/pages/posts/OlderPosts.module.css";
 import { MDXRemote } from "next-mdx-remote";
-import Link from "next/link";
+import { Button, Link } from "@mui/joy";
 
-const GetAllPosts = graphql(`
-query GetAllPosts($limit: Int) {
-    posts(sort: "published_datetime:DESC", pagination: { limit: $limit }) {
-      data {
-        id
-        attributes {
-          title
-          content
-          published_datetime
-          image {
-            data {
-              attributes {
-                url
-              }
+const GetOlderPosts = graphql(`
+query GetOlderPosts {
+  posts(sort: "published_datetime:DESC") {
+    data {
+      id
+      attributes {
+        title
+        content
+        published_datetime
+        image {
+          data {
+            attributes {
+              url
             }
           }
         }
       }
     }
   }
+}
 `);
 
 export const getStaticProps = async () => {
   const client = createApolloClient();
-  const {data} = await client.query({query: GetAllPosts, variables: {limit:2}});
+  const {data} = await client.query({query: GetOlderPosts, variables: {}});
 
   const serializedPosts = await Promise.all(
     data.posts!.data.map(async (post) => {
@@ -53,10 +53,17 @@ export const getStaticProps = async () => {
   }   
 }
 
-const Home = ({posts} : {posts : PostProps[]}) => {
+
+const OlderPosts = ({posts} : {posts : PostProps[]}) => {
   
   return (
-    <div className={styles.homeContainer}>
+    <div className={styles.olderPostsContainer}>
+      <div className={styles.buttonGroup}>
+        <p>Filter posts by year</p>
+        <Link href={"/posts/2022"}>2022</Link>
+        <Link href="/posts/2023">2023</Link>
+      </div>
+      
       <ul>
         {
           posts?.map((post) => {
@@ -76,10 +83,8 @@ const Home = ({posts} : {posts : PostProps[]}) => {
           })
         }
       </ul>
-      <Link className={styles.showOlderLink} href="/posts">Show older</Link>
     </div>
   )
 }
 
-export default Home;
-
+export default OlderPosts

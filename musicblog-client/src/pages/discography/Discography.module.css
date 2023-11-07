@@ -1,0 +1,28 @@
+.discoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.discoContainer ul {
+    width: 50%;
+}
+
+.discoContainer ul img {
+    width: 250px;
+    height: 250px;
+}
+
+.discoContainer li {
+    list-style: none;
+    padding: 15px;
+}
+
+.listItem {
+    display: flex;
+}
+
+.listItem li {
+    width: 75%;
+}

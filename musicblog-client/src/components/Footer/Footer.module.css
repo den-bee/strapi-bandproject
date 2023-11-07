@@ -3,4 +3,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: rgb(160, 59, 152);
+    height: 50px;
 }

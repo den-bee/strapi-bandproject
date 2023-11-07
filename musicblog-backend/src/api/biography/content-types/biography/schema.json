@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "posts",
+  "collectionName": "biographies",
   "info": {
-    "singularName": "post",
-    "pluralName": "posts",
-    "displayName": "Posts",
+    "singularName": "biography",
+    "pluralName": "biographies",
+    "displayName": "Biographies",
     "description": ""
   },
   "options": {
@@ -14,6 +14,9 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "content": {
+      "type": "richtext"
     },
     "image": {
       "type": "media",
@@ -25,12 +28,6 @@
         "videos",
         "audios"
       ]
-    },
-    "published_datetime": {
-      "type": "datetime"
-    },
-    "content": {
-      "type": "richtext"
     }
   }
 }

@@ -1,0 +1,29 @@
+.olderPostsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonGroup  {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.olderPostsContainer ul {
+    width: 33%;
+}
+
+.blogImage {
+    height: 250px;
+    width: 250px;
+}
+
+  
+.olderPostsContainer li {
+    text-align: center;
+    list-style: none;
+    padding: 25px;
+}

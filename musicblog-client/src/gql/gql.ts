@@ -13,7 +13,11 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\nquery GetPosts {\n    posts {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n        }\n      }\n    }\n  }\n": types.GetPostsDocument,
+    "\nquery GetBiographies {\n    biographies {\n      data {\n        id\n        attributes {\n          title\n          content\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.GetBiographiesDocument,
+    "\nquery GetDiscography {\n    discographies {\n      data {\n        id\n        attributes {\n          title\n          tracklist\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.GetDiscographyDocument,
+    "\nquery GetAllPosts($limit: Int) {\n    posts(sort: \"published_datetime:DESC\", pagination: { limit: $limit }) {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.GetAllPostsDocument,
+    "\nquery GetPostsByYear {\n    posts(sort: \"published_datetime:DESC\") {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.GetPostsByYearDocument,
+    "\nquery GetOlderPosts {\n  posts(sort: \"published_datetime:DESC\") {\n    data {\n      id\n      attributes {\n        title\n        content\n        published_datetime\n        image {\n          data {\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}\n": types.GetOlderPostsDocument,
 };
 
 /**
@@ -33,7 +37,23 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\nquery GetPosts {\n    posts {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery GetPosts {\n    posts {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n        }\n      }\n    }\n  }\n"];
+export function graphql(source: "\nquery GetBiographies {\n    biographies {\n      data {\n        id\n        attributes {\n          title\n          content\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery GetBiographies {\n    biographies {\n      data {\n        id\n        attributes {\n          title\n          content\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nquery GetDiscography {\n    discographies {\n      data {\n        id\n        attributes {\n          title\n          tracklist\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery GetDiscography {\n    discographies {\n      data {\n        id\n        attributes {\n          title\n          tracklist\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nquery GetAllPosts($limit: Int) {\n    posts(sort: \"published_datetime:DESC\", pagination: { limit: $limit }) {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery GetAllPosts($limit: Int) {\n    posts(sort: \"published_datetime:DESC\", pagination: { limit: $limit }) {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nquery GetPostsByYear {\n    posts(sort: \"published_datetime:DESC\") {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery GetPostsByYear {\n    posts(sort: \"published_datetime:DESC\") {\n      data {\n        id\n        attributes {\n          title\n          content\n          published_datetime\n          image {\n            data {\n              attributes {\n                url\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nquery GetOlderPosts {\n  posts(sort: \"published_datetime:DESC\") {\n    data {\n      id\n      attributes {\n        title\n        content\n        published_datetime\n        image {\n          data {\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"): (typeof documents)["\nquery GetOlderPosts {\n  posts(sort: \"published_datetime:DESC\") {\n    data {\n      id\n      attributes {\n        title\n        content\n        published_datetime\n        image {\n          data {\n            attributes {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

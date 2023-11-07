@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "posts",
+  "collectionName": "discographies",
   "info": {
-    "singularName": "post",
-    "pluralName": "posts",
-    "displayName": "Posts",
+    "singularName": "discography",
+    "pluralName": "discographies",
+    "displayName": "Discography",
     "description": ""
   },
   "options": {
@@ -26,11 +26,8 @@
         "audios"
       ]
     },
-    "published_datetime": {
-      "type": "datetime"
-    },
-    "content": {
-      "type": "richtext"
+    "tracklist": {
+      "type": "text"
     }
   }
 }

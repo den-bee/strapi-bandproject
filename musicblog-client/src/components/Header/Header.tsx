@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./Header.module.css"
 import Stack from '@mui/joy/Stack';
 import Link from '@mui/joy/Link';
-import NextLink from 'next/link';
-
 
 const Header = () => {
     return (
@@ -18,10 +16,10 @@ const Header = () => {
                 spacing={2}
                 margin={3}
             >
-                <Link href={"/"}>Home</Link>
-                <Link>Biography</Link>
-                <Link>Discography</Link>
-                <Link>Overview</Link>
+                <Link className={styles.yearLink} href={"/"}>Home</Link>
+                <Link className={styles.yearLink}href={"/biography"}>Biography</Link>
+                <Link className={styles.yearLink} href={"/discography"}>Discography</Link>
+                <Link className={styles.yearLink} href={"/overview"}>Overview</Link>
             </Stack>
         </header>
     )

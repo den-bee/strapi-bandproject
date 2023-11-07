@@ -1,3 +1,33 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeContainer ul {
+  width: 33%;
+}
+
+.homeContainer li {
+  text-align: center;
+  list-style: none;
+  padding: 25px;
+}
+
+.blogImage {
+  height: 250px;
+  width: 250px;
+}
+
+.showOlderLink {
+  border: 1px solid black;
+  margin: 50px;
+  padding: 10px;
+}
+
+/*END CUSTOM CSS*/
+
 .main {
   display: flex;
   flex-direction: column;
