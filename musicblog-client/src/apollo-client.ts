@@ -4,7 +4,7 @@ const createApolloClient = () => {
 
   return new ApolloClient({
     link: new HttpLink({
-      uri: 'http://host.docker.internal:1338/graphql/?populate=*',
+      uri: 'https://strapi-bandproject.onrender.com/graphql/?populate=*',
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
       }
