@@ -1,9 +1,10 @@
 import createApolloClient from "@/apollo-client";
-import styles from "@/pages/posts/year/PostsByYear.module.css"
+import styles from "@/pages/posts/[year]/PostsByYear.module.css"
 import { graphql } from "@/gql/index";
 import { serialize } from "next-mdx-remote/serialize";
 import {Post as PostProps} from "@/types";
 import { MDXRemote } from "next-mdx-remote";
+import { Link } from "@mui/joy";
 
 const GetPostsByYear = graphql(`
 query GetPostsByYear {
@@ -34,6 +35,12 @@ export const getStaticPaths = async () => {
   const paths = data.posts!.data.map((post) => ({
     params: {year: post.attributes?.published_datetime.substring(0,4)}
   }))
+
+  paths.filter((paramYear, index) => {
+    let whatever = paths.findIndex((p) => paramYear.params.year === p.params.year);
+    
+    return index === whatever
+  })
 
   return {
     paths: paths,
@@ -73,14 +80,23 @@ export const getStaticProps = async ({params} : {params: {year: string}}) => {
 const PostsByYear = ({posts} : {posts : PostProps[]}) => {
   
   return (
-    <div className={styles.homeContainer}>
+    
+    <div className={styles.yearContainer}>
+      <div className={styles.yearNav}>
+        <p>Filter posts by year:</p>
+        <div className={styles.buttonGroup}>
+          <Link className={styles.yearLink} href={"/posts/2022"}>2022</Link>
+          <Link className={styles.yearLink} href={"/posts/2023"}>2023</Link>
+        </div>
+      </div>
+      
       <ul>
         {
           posts?.map((post) => {
             return (
-              <div>
+              <div className={styles.blogPost}>
                 <li key={post.id}>
-                  {post.attributes.title}
+                  <h1>{post.attributes.title}</h1>
                 </li>
                 <li key={post.id}>
                   <img className={styles.blogImage} src={post.attributes.image}/>
@@ -88,6 +104,7 @@ const PostsByYear = ({posts} : {posts : PostProps[]}) => {
                 <li key={post.id}>
                   <MDXRemote {...post.attributes.content}/>
                 </li>
+                <hr />
               </div>
             )
           })

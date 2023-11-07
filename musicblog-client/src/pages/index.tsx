@@ -61,9 +61,9 @@ const Home = ({posts} : {posts : PostProps[]}) => {
         {
           posts?.map((post) => {
             return (
-              <div>
+              <div className={styles.blogPost}>
                 <li key={post.id}>
-                  {post.attributes.title}
+                  <h1>{post.attributes.title}</h1>
                 </li>
                 <li key={post.id}>
                   <img className={styles.blogImage} src={post.attributes.image}/>
@@ -71,6 +71,7 @@ const Home = ({posts} : {posts : PostProps[]}) => {
                 <li key={post.id}>
                   <MDXRemote {...post.attributes.content}/>
                 </li>
+                <hr className={styles.line} />
               </div>
             )
           })

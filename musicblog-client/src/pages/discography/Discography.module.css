@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 85vh;
 }
 
 .discoContainer ul {
@@ -21,8 +22,13 @@
 
 .listItem {
     display: flex;
+    margin: 50px;
 }
 
 .listItem li {
     width: 75%;
+}
+
+.listItem h1 {
+    font-size: 25px;
 }

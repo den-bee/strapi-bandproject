@@ -6,9 +6,9 @@ import Link from '@mui/joy/Link';
 const Header = () => {
     return (
         <header className={styles.header}>
-            <div className={styles.bandName}>
+            <Link href={"/"} className={styles.bandName}>
                 <p>Bee The Mouse</p>
-            </div>
+            </Link>
             <Stack
                 direction="row"
                 justifyContent="center"
@@ -19,7 +19,6 @@ const Header = () => {
                 <Link className={styles.yearLink} href={"/"}>Home</Link>
                 <Link className={styles.yearLink}href={"/biography"}>Biography</Link>
                 <Link className={styles.yearLink} href={"/discography"}>Discography</Link>
-                <Link className={styles.yearLink} href={"/overview"}>Overview</Link>
             </Stack>
         </header>
     )

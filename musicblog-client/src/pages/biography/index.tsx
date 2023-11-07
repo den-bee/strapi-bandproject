@@ -57,10 +57,11 @@ const Biography = ({biographies} : {biographies : BioProps[]}) => {
             {
               biographies?.map((biography) => {
                 return (
-                  <div>
-                    <li key={biography.id}>{biography.attributes.title}</li>
+                  <div className={styles.bioItem}>
+                    <li key={biography.id}><h1>{biography.attributes.title}</h1></li>
                     <li key={biography.id}><img src={biography.attributes.image}/></li>
                     <li key={biography.id}><MDXRemote {...biography.attributes.content}/></li>
+                    <hr />
                   </div>
                 )
               })

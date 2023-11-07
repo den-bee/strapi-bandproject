@@ -5,10 +5,11 @@ import {Post as PostProps} from "@/types";
 import styles from "@/pages/posts/OlderPosts.module.css";
 import { MDXRemote } from "next-mdx-remote";
 import { Button, Link } from "@mui/joy";
+import { HttpLink } from "@apollo/client";
 
 const GetOlderPosts = graphql(`
 query GetOlderPosts {
-  posts(sort: "published_datetime:DESC") {
+  posts(sort: "published_datetime:ASC") {
     data {
       id
       attributes {
@@ -58,19 +59,21 @@ const OlderPosts = ({posts} : {posts : PostProps[]}) => {
   
   return (
     <div className={styles.olderPostsContainer}>
-      <div className={styles.buttonGroup}>
-        <p>Filter posts by year</p>
-        <Link href={"/posts/2022"}>2022</Link>
-        <Link href="/posts/2023">2023</Link>
+      <div className={styles.yearNav}>
+        <p>Filter posts by year:</p>
+        <div className={styles.buttonGroup}>
+          <Link className={styles.yearLink} href={"/posts/2022"}>2022</Link>
+          <Link className={styles.yearLink} href={"/posts/2023"}>2023</Link>
+        </div>
       </div>
       
       <ul>
         {
           posts?.map((post) => {
             return (
-              <div>
+              <div className={styles.blogPost}>
                 <li key={post.id}>
-                  {post.attributes.title}
+                  <h1>{post.attributes.title}</h1>
                 </li>
                 <li key={post.id}>
                   <img className={styles.blogImage} src={post.attributes.image}/>
@@ -78,6 +81,7 @@ const OlderPosts = ({posts} : {posts : PostProps[]}) => {
                 <li key={post.id}>
                   <MDXRemote {...post.attributes.content}/>
                 </li>
+                <hr />
               </div>
             )
           })

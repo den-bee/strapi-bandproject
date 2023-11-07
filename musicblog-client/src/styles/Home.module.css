@@ -15,9 +15,17 @@
   padding: 25px;
 }
 
+.homeContainer li h1 {
+  font-size: 35px;
+}
+
 .blogImage {
   height: 250px;
   width: 250px;
+}
+
+.blogPost {
+  margin-bottom: 100px;
 }
 
 .showOlderLink {

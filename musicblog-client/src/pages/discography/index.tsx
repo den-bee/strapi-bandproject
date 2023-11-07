@@ -42,11 +42,11 @@ const Discography = ({discography} : {discography : DiscoProps[]}) => {
                 {
                 discography.map((item) => {
                     return (
-                        <li className={styles.listItem}>
+                        <div className={styles.listItem}>
                             <li key={item.id}><img src={item.attributes.image.data.attributes.url}/></li>
-                            <li key={item.id}>{item.attributes.title}</li>
-                            <li key={item.id} >{item.attributes.tracklist}</li>
-                        </li>
+                            <li key={item.id}><h1>{item.attributes.title}</h1></li>
+                            <li key={item.id}><p>{item.attributes.tracklist}</p></li>
+                        </div>
                     )
                 })
                 }

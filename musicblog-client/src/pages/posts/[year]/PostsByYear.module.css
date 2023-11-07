@@ -1,18 +1,10 @@
-.olderPostsContainer {
+.yearContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 85vh;
 }
-
-.olderPostsContainer h1 {
-    font-size: 35px;
-}
-
-.blogPost {
-    margin-bottom: 100px;
-}
-  
 
 .yearNav {
     margin-top: 25px;
@@ -34,17 +26,25 @@
     text-decoration: none;
 }
 
-.olderPostsContainer ul {
+.yearContainer h1 {
+    font-size: 35px;
+}
+
+.blogPost {
+    margin-bottom: 100px;
+}
+
+.yearContainer ul {
     width: 33%;
+}
+
+.yearContainer li {
+    text-align: center;
+    list-style: none;
+    padding: 25px;
 }
 
 .blogImage {
     height: 250px;
     width: 250px;
-}
-
-.olderPostsContainer li {
-    text-align: center;
-    list-style: none;
-    padding: 25px;
 }
