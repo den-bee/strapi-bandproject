@@ -37,9 +37,9 @@ export const getStaticPaths = async () => {
   }))
 
   paths.filter((paramYear, index) => {
-    let whatever = paths.findIndex((p) => paramYear.params.year === p.params.year);
+    let pathIndex = paths.findIndex((p) => paramYear.params.year === p.params.year);
     
-    return index === whatever
+    return index === pathIndex
   })
 
   return {
