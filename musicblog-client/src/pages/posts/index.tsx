@@ -4,8 +4,14 @@ import { serialize } from "next-mdx-remote/serialize";
 import {Post as PostProps} from "@/types";
 import styles from "@/pages/posts/OlderPosts.module.css";
 import { MDXRemote } from "next-mdx-remote";
-import { Button, Link } from "@mui/joy";
-import { HttpLink } from "@apollo/client";
+import { Link } from "@mui/joy";
+import createCache from '@emotion/cache';
+import { CacheProvider } from "@emotion/react";
+
+const cache = createCache({
+    key: "css",
+    prepend: true
+})
 
 const GetOlderPosts = graphql(`
 query GetOlderPosts {
@@ -58,36 +64,38 @@ export const getStaticProps = async () => {
 const OlderPosts = ({posts} : {posts : PostProps[]}) => {
   
   return (
-    <div className={styles.olderPostsContainer}>
-      <div className={styles.yearNav}>
-        <p>Filter posts by year:</p>
-        <div className={styles.buttonGroup}>
-          <Link className={styles.yearLink} href={"/posts/2022"}>2022</Link>
-          <Link className={styles.yearLink} href={"/posts/2023"}>2023</Link>
+    <CacheProvider value={cache}>
+      <div className={styles.olderPostsContainer}>
+        <div className={styles.yearNav}>
+          <p>Filter posts by year:</p>
+          <div className={styles.buttonGroup}>
+            <Link className={styles.yearLink} href={"/posts/2022"}>2022</Link>
+            <Link className={styles.yearLink} href={"/posts/2023"}>2023</Link>
+          </div>
         </div>
+        
+        <ul>
+          {
+            posts?.map((post) => {
+              return (
+                <div className={styles.blogPost}>
+                  <li key={post.id}>
+                    <h1>{post.attributes.title}</h1>
+                  </li>
+                  <li key={post.id}>
+                    <img className={styles.blogImage} src={post.attributes.image}/>
+                  </li>
+                  <li key={post.id}>
+                    <MDXRemote {...post.attributes.content}/>
+                  </li>
+                  <hr />
+                </div>
+              )
+            })
+          }
+        </ul>
       </div>
-      
-      <ul>
-        {
-          posts?.map((post) => {
-            return (
-              <div className={styles.blogPost}>
-                <li key={post.id}>
-                  <h1>{post.attributes.title}</h1>
-                </li>
-                <li key={post.id}>
-                  <img className={styles.blogImage} src={post.attributes.image}/>
-                </li>
-                <li key={post.id}>
-                  <MDXRemote {...post.attributes.content}/>
-                </li>
-                <hr />
-              </div>
-            )
-          })
-        }
-      </ul>
-    </div>
+    </CacheProvider>
   )
 }
 
