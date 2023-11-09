@@ -29,3 +29,9 @@
 .bioItem h1 {
     font-size: 50px;
 }
+
+@media screen and (max-width: 500px) {
+    .bioContainer ul {
+      width: 80%;
+    }
+}

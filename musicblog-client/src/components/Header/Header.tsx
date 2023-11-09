@@ -24,6 +24,7 @@ const Header = () => {
                     alignItems="center"
                     spacing={2}
                     margin={3}
+                    className={styles.nav}
                 >
                     <Link className={styles.yearLink} href={"/"}>Home</Link>
                     <Link className={styles.yearLink}href={"/biography"}>Biography</Link>

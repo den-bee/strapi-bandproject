@@ -34,6 +34,12 @@
   padding: 10px;
 }
 
+@media screen and (max-width: 500px) {
+  .homeContainer ul {
+    width: 80%;
+  }
+}
+
 /*END CUSTOM CSS*/
 
 .main {

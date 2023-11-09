@@ -32,3 +32,41 @@
 .listItem h1 {
     font-size: 25px;
 }
+
+@media screen and (max-width: 500px) {
+    .discoContainer ul {
+        width: 80%;
+    }
+
+    .listItem {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tracklist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .tracklist {
+        margin-left: 25px;
+    }
+}
+
+@media screen and (max-width: 900px) {  
+    .listItem {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    .tracklist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

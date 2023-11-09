@@ -28,3 +28,23 @@
     text-decoration: none;
     color: rgb(212, 197, 197);
 }
+
+@media screen and (max-width: 500px) {
+    .header {
+        display: block;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .nav {
+        margin-right: 5px;
+    }
+
+    .bandName {
+        margin-top: 10px;
+    }
+
+    .bandName p {
+        font-size: 35px;
+    }
+}
