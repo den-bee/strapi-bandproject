@@ -5,7 +5,7 @@ const render = "https://strapi-bandproject.onrender.com/graphql/?populate=*"
 const local = "http://host.docker.internal:1338/graphql/?populate=*";
  
 const config: CodegenConfig = {
-   schema: render,
+   schema: local,
    documents: ['src/**/*.tsx'],
    generates: {
       './src/gql/': {

@@ -8,7 +8,7 @@ const createApolloClient = () => {
 
   return new ApolloClient({
     link: new HttpLink({
-      uri: render,
+      uri: local,
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
       }

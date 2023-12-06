@@ -17,20 +17,23 @@
 
 .discoContainer li {
     list-style: none;
-    padding: 15px;
 }
 
 .listItem {
     display: flex;
     margin: 50px;
-}
-
-.listItem li {
-    width: 75%;
+    justify-content: space-around;
 }
 
 .listItem h1 {
     font-size: 25px;
+}
+
+.tracklist {
+    padding: 5px;
+    align-self: flex-start;
+    text-decoration: none;
+    color: black;
 }
 
 @media screen and (max-width: 500px) {

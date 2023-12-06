@@ -1,0 +1,11 @@
+.songContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.songContainer h1 {
+    align-self: center;
+    margin: 30px;
+}

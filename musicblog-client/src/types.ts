@@ -33,11 +33,34 @@ export interface Discography {
   id: number,
   attributes: {
     title: string,
-    tracklist: string,
     image: {
       data: {
         attributes: {
           url: string
+        }
+      }
+    }
+    songs: {
+      data: Song[]
+    }
+  }
+}
+
+export interface Song {
+  id: number,
+  attributes: {
+    title: string,
+    video: {
+      data: {
+        attributes: {
+          url: string
+        }
+      }
+    }
+    album: {
+      data: {
+        attributes: {
+          title: string
         }
       }
     }

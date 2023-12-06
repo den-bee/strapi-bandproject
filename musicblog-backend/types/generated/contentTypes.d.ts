@@ -724,7 +724,11 @@ export interface ApiDiscographyDiscography extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     image: Attribute.Media;
-    tracklist: Attribute.Text;
+    songs: Attribute.Relation<
+      'api::discography.discography',
+      'oneToMany',
+      'api::song.song'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -769,6 +773,35 @@ export interface ApiPostPost extends Schema.CollectionType {
   };
 }
 
+export interface ApiSongSong extends Schema.CollectionType {
+  collectionName: 'songs';
+  info: {
+    singularName: 'song';
+    pluralName: 'songs';
+    displayName: 'Songs';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    video: Attribute.Media;
+    album: Attribute.Relation<
+      'api::song.song',
+      'manyToOne',
+      'api::discography.discography'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::song.song', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::song.song', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -788,6 +821,7 @@ declare module '@strapi/types' {
       'api::biography.biography': ApiBiographyBiography;
       'api::discography.discography': ApiDiscographyDiscography;
       'api::post.post': ApiPostPost;
+      'api::song.song': ApiSongSong;
     }
   }
 }
