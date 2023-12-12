@@ -1,0 +1,21 @@
+.tracklist {
+    display: flex;
+    flex-direction: column;
+}
+
+.songtitle {
+    text-decoration: none;
+    color: black;
+    font-family: "Amatic";
+}
+
+@media screen and (max-width: 850px) {
+    .tracklist {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+}
+

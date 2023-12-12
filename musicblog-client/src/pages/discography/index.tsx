@@ -1,8 +1,9 @@
 import createApolloClient from "@/apollo-client";
 import { graphql } from "@/gql/index";
-import { Discography as DiscoProps, Song } from "@/types";
+import { Discography as DiscoProps, Song as SongProps } from "@/types";
 import styles from "@/pages/discography/Discography.module.css";
-import { Link, ListItem } from "@mui/joy";
+import Tracklist from "@/components/Tracklist/Tracklist";
+import Link from "next/link";
 
 const GetDiscography = graphql(`
 query GetDiscography {
@@ -18,7 +19,7 @@ query GetDiscography {
             }
           }
         }
-        songs {
+        songs(sort: "id:asc") {
           data {
             id
             attributes {
@@ -54,7 +55,7 @@ const Discography = ({discography} : {discography : DiscoProps[]}) => {
                         <div key={item.id} className={styles.listItem}>
                             <li><img src={item.attributes.image.data.attributes.url}/></li>
                             <li className={styles.tracklist}><h1>{item.attributes.title}</h1></li>
-                            <Link href={"#"} className={styles.tracklist}><p>{item.attributes.songs.data[0].attributes.title}</p></Link>
+                            <Tracklist songs={item.attributes.songs.data}/>
                         </div>
                     )
                 })

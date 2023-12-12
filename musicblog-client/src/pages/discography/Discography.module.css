@@ -6,10 +6,6 @@
     min-height: 85vh;
 }
 
-.discoContainer ul {
-    width: 50%;
-}
-
 .discoContainer ul img {
     width: 250px;
     height: 250px;
@@ -22,16 +18,14 @@
 .listItem {
     display: flex;
     margin: 50px;
-    justify-content: space-around;
 }
 
 .listItem h1 {
     font-size: 25px;
+    margin: 0px 50px 0px 100px;
 }
 
 .tracklist {
-    padding: 5px;
-    align-self: flex-start;
     text-decoration: none;
     color: black;
 }
@@ -55,8 +49,12 @@
 }
 
 @media screen and (max-width: 850px) {
-    .tracklist {
-        margin-left: 25px;
+    .tracklist h1 {
+        margin: 0px;
+    }
+
+    .tracklist li {
+        margin: 0px;
     }
 }
 

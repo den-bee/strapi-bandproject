@@ -3,9 +3,24 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    min-height: 85vh;
 }
 
 .songContainer h1 {
     align-self: center;
     margin: 30px;
+    font-size: xx-large;
+}
+
+.songContainer p {
+    align-self: center;
+    margin-bottom: 50px;
+    
+}
+
+.songContainer video {
+    width: 500px;
+    height: 500px;
+    margin-bottom: 50px;
+    align-self: center;
 }
